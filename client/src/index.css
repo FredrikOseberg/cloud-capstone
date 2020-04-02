@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Neutrif, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code,
+input,
+textarea,
+span,
+p,
+button {
+  font-family: Neutrif, source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+@font-face {
+  font-family: Neutrif;
+  src: url("./assets/fonts/NeutrifPro-Light.otf");
+  font-weight: lighter;
+}
+
+@font-face {
+  font-family: Neutrif;
+  src: url("./assets/fonts/NeutrifPro-Regular.otf");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Neutrif;
+  src: url("./assets/fonts/NeutrifPro-Medium.otf");
+  font-weight: medium;
+}
+
+@font-face {
+  font-family: Neutrif;
+  src: url("./assets/fonts/NeutrifPro-Bold.otf");
+  font-weight: bold;
+}

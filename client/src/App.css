@@ -1,0 +1,26 @@
+.App {
+  background-color: #f1f1f1;
+  height: 100vh;
+}
+
+.chatbot-container {
+  align-items: flex-end;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatbot-btn {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-color: #800080;
+  margin-top: 20px;
+}
+
+.chatbot-btn-icon {
+  fill: #fff;
+  width: 30px;
+}

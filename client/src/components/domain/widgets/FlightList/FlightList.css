@@ -1,0 +1,63 @@
+.flight-list-header {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.flight-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.flight-header-container {
+  display: flex;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.flight-id-header {
+  margin-left: 35px;
+  margin-right: 14px;
+}
+
+.flight-airport-header {
+  margin-right: 28px;
+}
+
+.flight-time-header {
+  margin-right: 37px;
+}
+
+.flight-list-item {
+  display: flex;
+  font-size: 0.7rem;
+  align-items: center;
+  margin: 5px;
+  width: 100%;
+}
+
+.flight-list-icon-container {
+  height: 22.5px;
+  width: 22.5px;
+  padding: 5px;
+  background-color: #3de678;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.flightlist-icon {
+  width: 12.5px;
+  fill: #fff;
+}
+
+.flight-id {
+  width: 60px;
+}
+
+.flight-airport {
+  width: 40px;
+}
+
+.flight-time {
+  width: 50px;
+}
