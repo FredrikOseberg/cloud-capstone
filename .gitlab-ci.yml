@@ -6,6 +6,7 @@ build-client:
   stage: build
   image: node:latest
   script:
+    - yarn install
     - make build
   artifacts:
     expire_in: 7 days
