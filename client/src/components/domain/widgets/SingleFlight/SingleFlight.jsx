@@ -15,12 +15,13 @@ const SingleFlight = ({
   scrollIntoView
 }) => {
   const [selectedFlight, setSelectedFlight] = useState(null);
-  const getFlight = arr =>
-    arr.filter(flight => flight.FlightId === selectedFlightId)[0];
 
   const { iata } = selectedAirport;
 
   useEffect(() => {
+    const getFlight = arr =>
+      arr.filter(flight => flight.FlightId === selectedFlightId)[0];
+
     const getFlights = async () => {
       let newFlights = await getFlightsData(iata, "departure");
       let selectedFlight = getFlight(newFlights);
@@ -34,7 +35,7 @@ const SingleFlight = ({
       setSelectedFlight("notfound");
     };
     getFlights();
-  }, []);
+  }, [iata, selectedFlightId]);
 
   useEffect(() => scrollIntoView());
 

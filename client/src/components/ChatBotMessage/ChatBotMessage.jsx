@@ -20,10 +20,21 @@ const ChatBotMessage = ({
 }) => {
   const [show, toggleShow] = useState(false);
   useEffect(() => {
+    const disableLoading = (messages, setState) => {
+      let defaultDisableTime = 750;
+      if (delay) defaultDisableTime += delay;
+      setTimeout(() => {
+        const message = messages.find(message => message.id === id);
+        message.loading = false;
+
+        setState(state => ({ ...state, messages: messages }));
+      }, defaultDisableTime);
+    };
+
     if (terminateLoading) {
       disableLoading(messages, setState);
     }
-  }, []);
+  }, [delay, id, messages, setState, terminateLoading]);
 
   useEffect(() => {
     if (delay) {
@@ -32,17 +43,6 @@ const ChatBotMessage = ({
       toggleShow(true);
     }
   }, [delay]);
-
-  const disableLoading = (messages, setState) => {
-    let defaultDisableTime = 750;
-    if (delay) defaultDisableTime += delay;
-    setTimeout(() => {
-      const message = messages.find(message => message.id === id);
-      message.loading = false;
-
-      setState(state => ({ ...state, messages: messages }));
-    }, defaultDisableTime);
-  };
 
   const chatMessageClasses = classnames("chat-bot-message", {
     "chat-bot-adjacent-message": adjacentMessage

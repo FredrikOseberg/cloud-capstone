@@ -3,7 +3,6 @@ import { ConditionallyRender } from "react-util-kit";
 
 import "./AirportSelector.css";
 
-import { createChatBotMessage } from "../../../Chat/chatUtils";
 import { getReducedAirportObject } from "./airportSelectorUtils";
 
 import { getAirports } from "../../../../data/data";

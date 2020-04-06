@@ -9,7 +9,7 @@ const Link = ({ url, title }) => {
     <a
       href={url}
       target="_blank"
-      rel="noopener norefferer"
+      rel="noopener noreferrer"
       className="url-link"
     >
       <UrlIcon className="url-icon" />
