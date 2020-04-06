@@ -11,3 +11,7 @@ is done on the master branch.
 
 ## Interact with the chatbot
 The chatbot helps you find information about norwegian aviation services. Interact with the chatbot by asking about flights, options, baggage, parking or ask to speak to a real person.
+
+## Tech
+AWS Lambda
+React
