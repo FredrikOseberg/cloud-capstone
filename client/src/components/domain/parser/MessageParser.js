@@ -6,7 +6,7 @@ class MessageParser {
   parse(message) {
     if (this.containsFlightId(message)) {
       const id = this.containsFlightId(message);
-      this.actionProvider.handleFlightIdMatch(id);
+      return this.actionProvider.handleFlightIdMatch(id);
     }
 
     if (
@@ -14,8 +14,32 @@ class MessageParser {
       message.includes("help") ||
       message.includes("do for me")
     ) {
-      this.actionProvider.handleOptions();
+      return this.actionProvider.handleOptions({ withAvatar: true });
     }
+
+    if (
+      message.includes("talk") ||
+      message.includes("speak") ||
+      message.includes("real person") ||
+      message.includes("person") ||
+      message.includes("contact")
+    ) {
+      return this.actionProvider.handleContactInfo();
+    }
+
+    if (message.includes("parking") || message.includes("parkering")) {
+      return this.actionProvider.handleParkingOptions();
+    }
+
+    if (message.includes("flights") || message.includes("flight")) {
+      return this.actionProvider.handleFlightsChoice();
+    }
+
+    if (message.includes("airport")) {
+      return this.actionProvider.handleAirport();
+    }
+
+    return this.actionProvider.handleOptions({ withAvatar: true });
   }
 
   containsFlightId = message => {

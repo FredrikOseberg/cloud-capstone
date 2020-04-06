@@ -17,15 +17,15 @@
 
 .flight-id-header {
   margin-left: 35px;
-  margin-right: 14px;
+  width: 60px;
 }
 
 .flight-airport-header {
-  margin-right: 28px;
+  width: 40px;
 }
 
 .flight-time-header {
-  margin-right: 37px;
+  width: 50px;
 }
 
 .flight-list-item {
@@ -41,6 +41,15 @@
   width: 22.5px;
   padding: 5px;
   background-color: #3de678;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.flight-list-icon-container-arrival {
+  height: 22.5px;
+  width: 22.5px;
+  padding: 5px;
+  background-color: #34cabb;
   border-radius: 50%;
   margin-right: 8px;
 }

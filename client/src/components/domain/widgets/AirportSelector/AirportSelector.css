@@ -4,8 +4,8 @@
   color: #fff;
   padding: 10px;
   border-radius: 5px;
-  font-size: 0.8rem;
-  transform: translateY(-10px);
+  margin: -5px 0px;
+  font-size: 0.9rem;
 }
 
 .airport-selector-heading {

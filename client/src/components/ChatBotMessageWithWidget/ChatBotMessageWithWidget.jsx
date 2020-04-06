@@ -8,6 +8,7 @@ const ChatBotMessageWithWidget = ({
   messages,
   setState,
   adjacentMessage,
+  scrollIntoView,
   state,
   widgetRegistry
 }) => {
@@ -21,7 +22,10 @@ const ChatBotMessageWithWidget = ({
       />
       <ConditionallyRender
         ifTrue={!passDownProps.loading}
-        show={widgetRegistry.getWidget(passDownProps.widget, state)}
+        show={widgetRegistry.getWidget(passDownProps.widget, {
+          ...state,
+          scrollIntoView
+        })}
       />
     </Fragment>
   );

@@ -3,6 +3,7 @@ import { ConditionallyRender } from "react-util-kit";
 
 import "./AirportSelector.css";
 
+import { createChatBotMessage } from "../../../Chat/chatUtils";
 import { getReducedAirportObject } from "./airportSelectorUtils";
 
 import { getAirports } from "../../../../data/data";
@@ -26,12 +27,14 @@ const AirportSelector = ({
   }, []);
 
   const handleSubmit = e => {
-    setState(state => ({ ...state, [updateKey]: e.target.value }));
+    setState(state => ({
+      ...state,
+      [updateKey]: airports.find(airport => airport.iata === e.target.value)
+    }));
   };
 
   const handleConfirm = () => {
     actionProvider.handleOptions();
-
     toggleDisplaySelector(prevState => !prevState);
   };
 
@@ -47,7 +50,7 @@ const AirportSelector = ({
             <h2 className="airport-selector-heading">Airport</h2>
             <select
               className="airport-selector"
-              value={selectedAirport}
+              value={selectedAirport.iata}
               onChange={handleSubmit}
             >
               {airports.map(item => {
@@ -67,10 +70,7 @@ const AirportSelector = ({
           <>
             <h2 className="airport-selector-heading">Airport</h2>
             <p>
-              Great! You have chosen this airport:{" "}
-              {airports.length &&
-                airports.find(airport => airport.iata === selectedAirport)
-                  .nameCompact}
+              Great! You have chosen this airport: {selectedAirport.nameCompact}
             </p>
           </>
         }

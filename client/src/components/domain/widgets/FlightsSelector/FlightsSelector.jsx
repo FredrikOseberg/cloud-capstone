@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { ConditionallyRender } from "react-util-kit";
+import React from "react";
 
 import { getFlightsData } from "../../../../data/data";
 
@@ -9,7 +8,7 @@ const FlightsSelector = props => {
   const { selectedAirport, setState, actionProvider } = props;
 
   const getFlights = async type => {
-    const flights = await getFlightsData(selectedAirport, type);
+    const flights = await getFlightsData(selectedAirport.iata, type);
     const filteredFlights = flights.filter(item => item.Status === null);
 
     setState(state => ({

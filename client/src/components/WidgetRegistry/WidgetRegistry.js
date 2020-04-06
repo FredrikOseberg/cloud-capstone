@@ -25,6 +25,7 @@ class WidgetRegistry {
     if (!widgetObject) return;
 
     let props = {
+      scrollIntoView: state.scrollIntoView,
       ...widgetObject.props,
       ...this.mapStateToProps(widgetObject.mapStateToProps, state),
       setState: this.setState,
@@ -39,12 +40,14 @@ class WidgetRegistry {
     return widgetObject.widget(props);
   };
 
-  mapStateToProps(props, state) {
+  mapStateToProps = (props, state) => {
+    if (!props) return;
+
     return props.reduce((acc, prop) => {
       acc[prop] = state[prop];
       return acc;
     }, {});
-  }
+  };
 }
 
 export default WidgetRegistry;

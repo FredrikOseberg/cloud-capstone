@@ -35,5 +35,5 @@ export const lastMessageTypeIsBot = (arr, index) => {
 };
 
 export const lastMessageTypeDoesNotHaveWidget = (arr, index) => {
-  return arr[index - 1] && arr[index - 1].widget == false;
+  return arr[index - 1] && arr[index - 1].widget === false;
 };

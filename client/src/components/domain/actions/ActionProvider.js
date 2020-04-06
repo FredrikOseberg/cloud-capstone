@@ -4,10 +4,82 @@ export class ActionProvider {
     this.setState = setStateFunc;
   }
 
-  handleOptions = () => {
+  handleContactInfo = () => {
+    const message = this.createChatBotMessage(
+      "If you need to speak to a real person, you can call 67 03 00 00.",
+      {
+        loading: true,
+        terminateLoading: true,
+        withAvatar: true
+      }
+    );
+
+    this.addMessageToState(message);
+  };
+  handleManageParking = () => {
+    const message = this.createChatBotMessage(
+      "Here's a link to Avinors manage parking pages.",
+      {
+        widget: "manageParkingLink",
+        loading: true,
+        terminateLoading: true,
+        withAvatar: true
+      }
+    );
+
+    this.addMessageToState(message);
+  };
+
+  handleLostLuggage = () => {
+    const message = this.createChatBotMessage(
+      "Here's a link to Avinors lost luggage pages.",
+      {
+        widget: "lostLuggageLink",
+        loading: true,
+        terminateLoading: true,
+        withAvatar: true
+      }
+    );
+
+    this.addMessageToState(message);
+  };
+
+  handleBookParking = () => {
+    const message = this.createChatBotMessage(
+      "Here's a link to Avinors book parking pages.",
+      {
+        widget: "bookParkingLink",
+        loading: true,
+        terminateLoading: true,
+        withAvatar: true
+      }
+    );
+
+    this.addMessageToState(message);
+  };
+
+  handleAirport = () => {
+    const message = this.createChatBotMessage(
+      "Do you need to switch airport?",
+      {
+        widget: "airportSelector",
+        loading: true,
+        terminateLoading: true
+      }
+    );
+
+    this.addMessageToState(message);
+  };
+
+  handleOptions = options => {
     const message = this.createChatBotMessage(
       "How can I help you? Below are some possible options.",
-      { widget: "options", loading: true, terminateLoading: true }
+      {
+        widget: "options",
+        loading: true,
+        terminateLoading: true,
+        ...options
+      }
     );
 
     this.addMessageToState(message);
@@ -42,12 +114,42 @@ export class ActionProvider {
 
   handleFlightIdMatch = flightId => {
     const message = this.createChatBotMessage(
-      `Thanks. I found the following results for this flight.`,
+      `Here's what I found for this flight.`,
       {
         loading: true,
         terminateLoading: true,
         withAvatar: true,
         widget: "singleFlight"
+      }
+    );
+
+    this.setState(state => ({
+      ...state,
+      selectedFlightId: flightId[0],
+      messages: [...state.messages, message]
+    }));
+  };
+
+  handleFlightNotFound = () => {
+    const message = this.createChatBotMessage(
+      `Sorry, couldn't find anything for that flight.`,
+      {
+        loading: true,
+        terminateLoading: true
+      }
+    );
+
+    this.addMessageToState(message);
+  };
+
+  handleParkingOptions = () => {
+    const message = this.createChatBotMessage(
+      `How can I help you with parking?`,
+      {
+        loading: true,
+        terminateLoading: true,
+        withAvatar: true,
+        widget: "parkingOptions"
       }
     );
 

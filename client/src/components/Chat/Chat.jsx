@@ -4,12 +4,7 @@ import UserChatMessage from "../UserChatMessage/UserChatMessage";
 import ChatBotMessage from "../ChatBotMessage/ChatBotMessage";
 import ChatBotMessageWithWidget from "../ChatBotMessageWithWidget/ChatBotMessageWithWidget";
 
-import {
-  botMessage,
-  createChatMessage,
-  lastMessageTypeDoesNotHaveWidget,
-  lastMessageTypeIsBot
-} from "./chatUtils";
+import { botMessage, createChatMessage } from "./chatUtils";
 
 import { ReactComponent as ChatIcon } from "../../assets/icons/paper-plane.svg";
 
@@ -52,17 +47,10 @@ const Chat = ({ state, setState, widgetRegistry, messageParser }) => {
         messages
       };
 
-      if (
-        lastMessageTypeIsBot(arr, index) &&
-        botMessage(messageObject) &&
-        lastMessageTypeDoesNotHaveWidget(arr, index)
-      ) {
-        chatBotMessageProps.adjacentMessage = true;
-      }
-
       if (messageObject.widget) {
         return (
           <ChatBotMessageWithWidget
+            scrollIntoView={scrollIntoView}
             {...chatBotMessageProps}
             key={messageObject.id}
           />
@@ -76,7 +64,6 @@ const Chat = ({ state, setState, widgetRegistry, messageParser }) => {
           {...chatBotMessageProps.passDownProps}
           messages={messages}
           setState={setState}
-          adjacentMessage={chatBotMessageProps.adjacentMessage}
         />
       );
     });
