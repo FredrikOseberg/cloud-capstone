@@ -7,7 +7,7 @@ build-client:
   image: node:latest
   script:
     - cd client && yarn install
-    - make build
+    - yarn build
   artifacts:
     expire_in: 7 days
     paths:
