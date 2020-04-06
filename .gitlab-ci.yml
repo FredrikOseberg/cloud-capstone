@@ -1,0 +1,38 @@
+stages:
+  - build
+  - deploy
+
+build-client:
+  stage: build
+  image: node:latest
+  script:
+    - make build
+  artifacts:
+    expire_in: 7 days
+    paths:
+      - ./client/build/
+  only:
+    - tags
+
+deploy-to-dev:
+  stage: deploy
+  image: node:latest
+  before_script:
+    - npm config set prefix /usr/local
+    - npm install -g serverless
+  script:
+    - sls deploy
+  only:
+    - tags
+    
+
+deploy-client-dev:
+  stage: deploy
+  variables:
+    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+  image: banst/awscli
+  script:
+      - aws s3 cp --recursive ./build s3://chatbot-static-ose
+  only:
+    - tags
