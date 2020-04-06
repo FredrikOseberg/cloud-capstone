@@ -31,4 +31,4 @@ deploy-client-dev:
     AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
   image: amazon/aws-cli
   script:
-      - s3 cp --recursive ./client/build s3://chatbot-static-ose
+      - aws s3 cp --recursive ./client/build s3://chatbot-static-ose
