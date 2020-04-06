@@ -12,8 +12,6 @@ build-client:
     expire_in: 7 days
     paths:
       - ./client/build/
-  only:
-    - tags
 
 deploy-to-dev:
   stage: deploy
@@ -23,8 +21,6 @@ deploy-to-dev:
     - npm install -g serverless
   script:
     - sls deploy
-  only:
-    - tags
     
 
 deploy-client-dev:
@@ -35,5 +31,3 @@ deploy-client-dev:
   image: banst/awscli
   script:
       - aws s3 cp --recursive ./build s3://chatbot-static-ose
-  only:
-    - tags
