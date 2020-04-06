@@ -19,6 +19,7 @@ deploy-to-dev:
   before_script:
     - npm config set prefix /usr/local
     - npm install -g serverless
+    - npm install
   script:
     - cd backend && sls deploy
     
@@ -30,4 +31,4 @@ deploy-client-dev:
     AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
   image: amazon/aws-cli
   script:
-      - aws2 s3 cp --recursive ./client/build s3://chatbot-static-ose
+      - aws s3 cp --recursive ./client/build s3://chatbot-static-ose
