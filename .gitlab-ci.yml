@@ -19,7 +19,7 @@ deploy-to-dev:
   before_script:
     - npm config set prefix /usr/local
     - npm install -g serverless
-    - npm install
+    - cd backend && npm install
   script:
     - cd backend && sls deploy
     
