@@ -45,6 +45,8 @@
 
 .chat-bot-loading-icon {
   height: 17px;
+  margin: 0 auto;
+  display: block;
 }
 
 #dots #dot1 {
